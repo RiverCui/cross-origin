@@ -28,8 +28,8 @@
       })
     }
     jsonp({
-      url: 'https://sp1.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php',
-      params: { resource_id: '4697', query: 'js' },
+      url: 'http://localhost:3000/say',
+      params: { wd: 'Hello' },
       cb: 'show'
     }).then(data => {
       console.log(data)
