@@ -11,6 +11,8 @@
 <body>
   <script>
     let xhr = new XMLHttpRequest()
+    document.cookie = "name=River"
+    xhr.withCredentials = true
     xhr.open('PUT', 'http://localhost:4000/getData', true)
     xhr.setRequestHeader('name', 'River')
     xhr.onreadystatechange = function () {
