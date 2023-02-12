@@ -9,11 +9,13 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'PUT')
     res.setHeader('Access-Control-Allow-Credentials', true)
     res.setHeader('Access-Control-Max-Age', 3)
+    res.setHeader('Access-Control-Expose-Headers', 'name')
   }
   next()
 })
 app.put('/getData', function (req, res) {
   console.log(req.headers)
+  res.setHeader('name', 'CYL')
   res.end('World')
 })
 app.get('/getData', function (req, res) {
