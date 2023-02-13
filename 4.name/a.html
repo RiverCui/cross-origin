@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- a 和 b 同源, http://localhost:3000 -->
+  <!-- c 独立源, http://localhost:4000 -->
+  <!-- a 获取 c 的数据：
+  a 引用 c，c 把值放到 window.name。因为跨域不能拿数据，所以把 a 引用的地址改到 b -->
+  <iframe id="iframe" src="http://localhost:4000/c.html" frameborder="0" onload="load()"></iframe>
+  <script>
+    let isFirst = true
+    function load() {
+      let iframe = document.getElementById('iframe')
+      if (isFirst) {
+        iframe.src = 'http://localhost:3000/b.html'
+        isFirst = false
+      } else {
+        console.log(iframe.contentWindow.name)
+      }
+    }
+  </script>
+</body>
+
+</html>
