@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 路径后的 hash 可以用来通信 -->
+  <!-- a 和 b 同源, http://localhost:3000 -->
+  <!-- c 独立源, http://localhost:4000 -->
+  <!-- a 想访问 c 的数据： -->
+  <!-- a 给 c 传一个 hash，c 收到 hash 后，把 hash 传给 b，b 将结果放到 a 的 hash 中 -->
+  <iframe id="iframe" src="http://localhost:4000/c.html" frameborder="0"></iframe>
+  <script>
+    let iframe = document.getElementById('iframe')
+    // 向 c.html 传 hash 值
+    setTimeout(() => {
+      iframe.src = iframe.src + '#user=admin'
+    }, 1000)
+    function onCallback(res) {
+      console.log('data from b.html ===>' + res)
+    }
+  </script>
+</body>
+
+</html>
